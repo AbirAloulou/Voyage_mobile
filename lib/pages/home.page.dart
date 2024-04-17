@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
             'Home Page',
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: Colors.indigo[200],
+          backgroundColor: Color.fromARGB(255, 199, 207, 254),
         ),
         body: Center(
           child: Wrap(

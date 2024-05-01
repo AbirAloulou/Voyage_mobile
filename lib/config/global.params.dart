@@ -43,6 +43,14 @@ class GlobalParams {
       "route": "/contact"
     },
     {
+      "title": "Prière",
+      "icon": Icon(
+        Icons.mosque_rounded,
+        color: Colors.indigo,
+      ),
+      "route": "/priere"
+    },
+    {
       "title": "Paramètres",
       "icon": Icon(
         Icons.settings,
@@ -67,5 +75,49 @@ class GlobalParams {
     {"title": "images/contact.png", "route": "/contact"},
     {"title": "images/parametres.png", "route": "/parametres"},
     {"title": "images/deconnexion.png", "route": "/login"},
+  ];
+
+  static List<Map<String, dynamic>> priere = [
+    {
+      "fr": "Fajr",
+      "ar": "الفجر",
+    },
+    {
+      "fr": "Dhuhr",
+      "ar": "الظهر",
+    },
+    {
+      "fr": "Asr",
+      "ar": "العصر",
+    },
+    {
+      "fr": "Maghrib",
+      "ar": "المغرب",
+    },
+    {
+      "fr": "Isha",
+      "ar": "العشاء",
+    },
+  ];
+
+  static List<Map<String, dynamic>> priere_timing = [
+    {
+      "ang": "Sunrise",
+      "fr": "Levé",
+      "ar": "الشروق",
+      "image": "images/sunrise.jpg",
+    },
+    {
+      "ang": "Sunset",
+      "fr": "Coucher",
+      "ar": "الغروب",
+      "image": "images/sunset.jpg",
+    },
+    // {
+    //   "ang": "hijri",
+    //   "fr": "Date en Hijri",
+    //   "ar": "التاريخ الهجري",
+    //   "image": "images/calendar.jpg",
+    // },
   ];
 }

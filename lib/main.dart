@@ -8,6 +8,7 @@ import '../pages/contact.page.dart';
 import '../pages/gallerie.page.dart';
 import '../pages/parametres.page.dart';
 import '../pages/pays.page.dart';
+import 'pages/priere.page.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       '/gallerie': (context) => GalleriePage(),
       '/parametres': (context) => ParametresPage(),
       '/pays': (context) => PaysPage(),
+      '/priere': (context) => PrierePage(),
     };
     return MaterialApp(
       debugShowCheckedModeBanner: false,

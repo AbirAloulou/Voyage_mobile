@@ -39,6 +39,9 @@ dependencies:
   intl: ^0.19.0
   google_fonts: 6.1.0
   fancy_gradient_card: ^0.0.4
+  sqflite:
+  path:
+  snippet_coder_utils:
 
 dev_dependencies:
   flutter_test:

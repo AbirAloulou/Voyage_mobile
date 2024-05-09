@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../config/global.params.dart';
 import '../menu/drawer.widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatelessWidget {
   late SharedPreferences prefs;
@@ -121,8 +122,10 @@ class HomePage extends StatelessWidget {
   }
 
   Future<void> _onDec(BuildContext context) async {
-    prefs = await SharedPreferences.getInstance();
-    prefs.setBool("connecte", false);
+    // prefs = await SharedPreferences.getInstance();
+    // prefs.setBool("connecte", false);
+    await FirebaseAuth.instance.signOut();
+
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
   }

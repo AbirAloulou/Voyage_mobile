@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,18 +85,40 @@ class InscriptionPage extends StatelessWidget {
   }
 
   Future<void> _onInscrire(BuildContext context) async {
-    prefs = await SharedPreferences
-        .getInstance(); // zedneha async ... await bech n9olo requete tebta chwaya estaneha w raja3li type de future
-    if (!txt_login.text.isEmpty && !txt_psw.text.isEmpty) {
-      prefs.setString("login", txt_login.text);
-      prefs.setString("psw", txt_psw.text);
-      prefs.setBool("connecte", true);
-      Navigator.pop(context);
-      Navigator.pushNamed(context, '/home');
-    } else {
-      const snackBar =
-          SnackBar(content: Text('Vous devez remplir les champs!!'));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    //   prefs = await SharedPreferences
+    //       .getInstance(); // zedneha async ... await bech n9olo requete tebta chwaya estaneha w raja3li type de future
+    //   if (!txt_login.text.isEmpty && !txt_psw.text.isEmpty) {
+    //     prefs.setString("login", txt_login.text);
+    //     prefs.setString("psw", txt_psw.text);
+    //     prefs.setBool("connecte", true);
+    //     Navigator.pop(context);
+    //     Navigator.pushNamed(context, '/home');
+    //   } else {
+    //     const snackBar =
+    //         SnackBar(content: Text('Vous devez remplir les champs!!'));
+    //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    //   }
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: txt_login.text,
+        password: txt_psw.text,
+      );
+      Navigator.pushNamed(context, '/login');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        const snackBar =
+            SnackBar(content: Text('The password provided is too weak.'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        const snackBar = SnackBar(
+            content: Text('The account already exists for that email.'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    } catch (e) {
+      print(e);
     }
   }
 }
